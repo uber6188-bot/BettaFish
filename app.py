@@ -3,8 +3,9 @@ Flask主应用 - 统一管理三个Streamlit应用
 """
 import streamlit as st
 
-st.title("🚀 BettaFish 已成功運行")
-st.write("你好，這是第一個頁面內容。")
+st.title("🐟 BettaFish 輿情系統")
+st.write("請選擇功能：")
+page = st.sidebar.selectbox("功能選單", ["儀表板", "數據分析", "關鍵詞搜尋"])
 import os
 import sys
 import subprocess
@@ -16,7 +17,9 @@ from flask import Flask, render_template, request, jsonify, Response
 from flask_socketio import SocketIO, emit
 import atexit
 import requests
-from loguru import logger
+data = requests.get("http://localhost:5000/api/status").json()
+st.json(data)
+
 import importlib
 from pathlib import Path
 from MindSpider.main import MindSpider
