@@ -1,7 +1,10 @@
 """
 Flask主应用 - 统一管理三个Streamlit应用
 """
+import streamlit as st
 
+st.title("🚀 BettaFish 已成功運行")
+st.write("你好，這是第一個頁面內容。")
 import os
 import sys
 import subprocess
