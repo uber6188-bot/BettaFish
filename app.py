@@ -17,7 +17,12 @@ from flask import Flask, render_template, request, jsonify, Response
 from flask_socketio import SocketIO, emit
 import atexit
 import requests
-data = requests.get("http://localhost:5000/api/status").json()
+import os
+import requests
+
+BASE_URL = os.environ.get("BASE_URL", "https://uber6188-bot-bettafish.streamlit.app")
+data = requests.get(f"{BASE_URL}/api/status").json()
+
 st.json(data)
 
 import importlib
